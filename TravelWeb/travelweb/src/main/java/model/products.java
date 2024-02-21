@@ -9,28 +9,30 @@ import javax.persistence.Table;
 public class products {
 	@Id
 	private Long productId;
+	private String productNumber;
 	private String productName;
 	private String productDestination;
 	private String productTime;
 	private String productDescription;
 	private String productNote;
-	private Integer productAmountAdult;
-	private Integer productAmountChild;
+	private Integer productPriceAdult;
+	private Integer productPriceChild;
 
 	public products() {
 	}
 
-	public products(Long productId, String productName, String productDestination, String productTime,
-			String productDescription, String productNote, Integer productAmountAdult, Integer productAmountChild) {
+	public products(Long productId, String productNumber, String productName, String productDestination, String productTime,
+			String productDescription, String productNote, Integer productPriceAdult, Integer productPriceChild) {
 		super();
 		this.productId = productId;
+		this.productNumber = productNumber;
 		this.productName = productName;
 		this.productDestination = productDestination;
 		this.productTime = productTime;
 		this.productDescription = productDescription;
 		this.productNote = productNote;
-		this.productAmountAdult = productAmountAdult;
-		this.productAmountChild = productAmountChild;
+		this.productPriceAdult = productPriceAdult;
+		this.productPriceChild = productPriceChild;
 	}
 
 	public Long getProductId() {
@@ -39,6 +41,14 @@ public class products {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+	
+	public String getProductNumber() {
+		return productNumber;
+	}
+
+	public void setProductNumber(String productNumber) {
+		this.productNumber = productNumber;
 	}
 
 	public String getProductName() {
@@ -81,28 +91,27 @@ public class products {
 		this.productNote = productNote;
 	}
 
-	public Integer getProductAmountAdult() {
-		return productAmountAdult;
+	public Integer getProductPriceAdult() {
+		return productPriceAdult;
 	}
 
-	public void setProductAmountAdult(Integer productAmountAdult) {
-		this.productAmountAdult = productAmountAdult;
+	public void setProductPriceAdult(Integer productPriceAdult) {
+		this.productPriceAdult = productPriceAdult;
 	}
 
-	public Integer getProductAmountChild() {
-		return productAmountChild;
+	public Integer getProductPriceChild() {
+		return productPriceChild;
 	}
 
-	public void setProductAmountChild(Integer productAmountChild) {
-		this.productAmountChild = productAmountChild;
+	public void setProductPriceChild(Integer productPriceChild) {
+		this.productPriceChild = productPriceChild;
 	}
 
 	@Override
 	public String toString() {
-		return "products [productId=" + productId + ", productName=" + productName + ", productDestination="
+		return "products [productId=" + productId + ", productNumber=" + productNumber + ", productName=" + productName + ", productDestination="
 				+ productDestination + ", productTime=" + productTime + ", productDescription=" + productDescription
-				+ ", productNote=" + productNote + ", productAmountAdult=" + productAmountAdult
-				+ ", productAmountChild=" + productAmountChild + "]";
+				+ ", productNote=" + productNote + ", productPriceAdult=" + productPriceAdult
+				+ ", productPriceChild=" + productPriceChild + "]";
 	}
-
 }

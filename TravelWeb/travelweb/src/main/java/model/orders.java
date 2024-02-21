@@ -5,12 +5,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="members")
+@Table(name="orders")
 public class orders {
 	@Id
 	private Long orderId;
 	private Long memberId;
-	private Long productId;
+	private String productNumber;
 	private String productName;
 	private String productTime;
 	private Integer productAmountAdult;
@@ -20,12 +20,12 @@ public class orders {
 	public orders() {
 	}
 
-	public orders(Long orderId, Long memberId, Long productId, String productName, String productTime,
+	public orders(Long orderId, Long memberId, String productNumber, String productName, String productTime,
 			Integer productAmountAdult, Integer productAmountChild, Integer productTotalPrice) {
 		super();
 		this.orderId = orderId;
 		this.memberId = memberId;
-		this.productId = productId;
+		this.productNumber = productNumber;
 		this.productName = productName;
 		this.productTime = productTime;
 		this.productAmountAdult = productAmountAdult;
@@ -49,12 +49,12 @@ public class orders {
 		this.memberId = memberId;
 	}
 
-	public Long getProductId() {
-		return productId;
+	public String getProductNumber() {
+		return productNumber;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setProductNumber(String productNumber) {
+		this.productNumber = productNumber;
 	}
 
 	public String getProductName() {
@@ -99,7 +99,7 @@ public class orders {
 
 	@Override
 	public String toString() {
-		return "orders [orderId=" + orderId + ", memberId=" + memberId + ", productId=" + productId + ", productName="
+		return "orders [orderId=" + orderId + ", memberId=" + memberId + ", productNumber=" + productNumber + ", productName="
 				+ productName + ", productTime=" + productTime + ", productAmountAdult=" + productAmountAdult
 				+ ", productAmountChild=" + productAmountChild + ", productTotalPrice=" + productTotalPrice + "]";
 	}

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="mvwebrest0215" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="travelweb" transaction-type="RESOURCE_LOCAL">
+		<class>model.members</class>
+		<class>model.orders</class>
+		<class>model.products</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/travelweb"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.password" value="1234"/>

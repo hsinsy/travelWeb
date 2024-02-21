@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `travelweb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `travelweb`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: travelweb
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,14 +26,16 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `productId` int NOT NULL AUTO_INCREMENT,
+  `productNumber` varchar(10) NOT NULL,
   `productName` varchar(45) NOT NULL,
-  `productDestination` varchar(45) DEFAULT NULL,
-  `productTime` varchar(45) DEFAULT NULL,
-  `productDescription` varchar(100) DEFAULT NULL,
-  `productNote` varchar(100) DEFAULT NULL,
-  `productPriceAdult` int DEFAULT NULL,
-  `productPriceChild` int DEFAULT NULL,
-  PRIMARY KEY (`productId`)
+  `productDestination` varchar(45) NOT NULL,
+  `productTime` varchar(45) NOT NULL,
+  `productDescription` varchar(100) NOT NULL,
+  `productNote` varchar(100) NOT NULL,
+  `productPriceAdult` int NOT NULL,
+  `productPriceChild` int NOT NULL,
+  PRIMARY KEY (`productId`),
+  UNIQUE KEY `productNumber_UNIQUE` (`productNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-21  0:24:48
+-- Dump completed on 2024-02-21 16:39:35
