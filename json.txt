@@ -1,0 +1,32 @@
+{   
+    "memberId": "",
+    "memberName": "",
+    "memberAccount": "",
+    "memberPassword": "",
+    "memberEmail": "",
+    "memberPhone": "",
+    "memberAddress": ""
+}
+
+{   
+    "productId": "",
+    "productNumber": "",
+    "productName": "",
+    "productDestination": "",
+    "productTime": "",
+    "productDescription": "",
+    "productNote": "",
+    "productPriceAdult": "",
+    "productPriceChild": ""
+}
+
+{   
+    "orderId": "",
+    "memberId": "",
+    "productNumber": "",
+    "productName": "",
+    "productTime": "",
+    "productAmountAdult": "",
+    "productAmountChild": "",
+    "productTotalPrice": ""
+}

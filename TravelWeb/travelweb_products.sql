@@ -31,12 +31,12 @@ CREATE TABLE `products` (
   `productDestination` varchar(45) NOT NULL,
   `productTime` varchar(45) NOT NULL,
   `productDescription` varchar(100) NOT NULL,
-  `productNote` varchar(100) NOT NULL,
+  `productNote` varchar(100) DEFAULT NULL,
   `productPriceAdult` int NOT NULL,
   `productPriceChild` int NOT NULL,
   PRIMARY KEY (`productId`),
   UNIQUE KEY `productNumber_UNIQUE` (`productNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,'JP11','日本三天兩夜','日本北海道','2024/10/11-2024/10/13','北海道雪國之旅','',1200,600),(2,'KR12','韓國兩天一夜','韓國首爾','2024/05/20-2024/05/21','韓國人文體驗之旅','',1500,1000);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-21 16:39:35
+-- Dump completed on 2024-03-04 16:43:16
