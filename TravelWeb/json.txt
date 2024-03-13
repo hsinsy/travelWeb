@@ -10,12 +10,13 @@
 
 {   
     "productId": "",
-    "productNumber": "",
+    "productCode": "",
     "productName": "",
-    "productDestination": "",
-    "productTime": "",
-    "productDescription": "",
-    "productNote": "",
+    "productArea": "",
+    "productImgUrl": "",
+    "startDate": "",
+    "endDate": "",
+    "travelDays": "",
     "productPriceAdult": "",
     "productPriceChild": ""
 }
@@ -23,9 +24,10 @@
 {   
     "orderId": "",
     "memberId": "",
-    "productNumber": "",
+    "productCode": "",
     "productName": "",
-    "productTime": "",
+    "startDate": "",
+    "endDate": "",
     "productAmountAdult": "",
     "productAmountChild": "",
     "productTotalPrice": ""

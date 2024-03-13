@@ -10,9 +10,10 @@ public class orders {
 	@Id
 	private Long orderId;
 	private Long memberId;
-	private String productNumber;
+	private String productCode;
 	private String productName;
-	private String productTime;
+	private String startDate;
+	private String endDate;
 	private Integer productAmountAdult;
 	private Integer productAmountChild;
 	private Integer productTotalPrice;
@@ -20,14 +21,16 @@ public class orders {
 	public orders() {
 	}
 
-	public orders(Long orderId, Long memberId, String productNumber, String productName, String productTime,
-			Integer productAmountAdult, Integer productAmountChild, Integer productTotalPrice) {
+	public orders(Long orderId, Long memberId, String productCode, String productName,
+				  String startDate, String endDate, Integer productAmountAdult,
+				  Integer productAmountChild, Integer productTotalPrice) {
 		super();
 		this.orderId = orderId;
 		this.memberId = memberId;
-		this.productNumber = productNumber;
+		this.productCode = productCode;
 		this.productName = productName;
-		this.productTime = productTime;
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.productAmountAdult = productAmountAdult;
 		this.productAmountChild = productAmountChild;
 		this.productTotalPrice = productTotalPrice;
@@ -49,12 +52,12 @@ public class orders {
 		this.memberId = memberId;
 	}
 
-	public String getProductNumber() {
-		return productNumber;
+	public String getProductCode() {
+		return productCode;
 	}
 
-	public void setProductNumber(String productNumber) {
-		this.productNumber = productNumber;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 
 	public String getProductName() {
@@ -65,12 +68,20 @@ public class orders {
 		this.productName = productName;
 	}
 
-	public String getProductTime() {
-		return productTime;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setProductTime(String productTime) {
-		this.productTime = productTime;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
 	public Integer getProductAmountAdult() {
@@ -99,9 +110,9 @@ public class orders {
 
 	@Override
 	public String toString() {
-		return "orders [orderId=" + orderId + ", memberId=" + memberId + ", productNumber=" + productNumber + ", productName="
-				+ productName + ", productTime=" + productTime + ", productAmountAdult=" + productAmountAdult
-				+ ", productAmountChild=" + productAmountChild + ", productTotalPrice=" + productTotalPrice + "]";
+		return "orders [orderId=" + orderId + ", memberId=" + memberId + ", productCode=" + productCode
+				+ ", productName=" + productName + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", productAmountAdult=" + productAmountAdult + ", productAmountChild=" + productAmountChild
+				+ ", productTotalPrice=" + productTotalPrice + "]";
 	}
-
 }

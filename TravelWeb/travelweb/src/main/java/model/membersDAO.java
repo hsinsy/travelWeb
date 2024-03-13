@@ -26,8 +26,29 @@ public class membersDAO {
 	public members findById(long id) throws NotFoundException {
 		if (member.size() == 0)
 			findAll();
-		members x = member.stream().filter(m -> m.getMemberId() == id).findAny().orElse(null);
+		members x = member.stream().filter(m -> m.getMemberId().equals(id)).findAny().orElse(null);
 		return x;
+	}
+	
+	public members findByAccount(String account) throws NotFoundException {
+		if (member.size() == 0)
+			findAll();
+		members x = member.stream().filter(m -> m.getMemberAccount().equals(account)).findAny().orElse(null);
+		return x;
+	}
+	
+	public members findByPassword(String password) throws NotFoundException {
+		if (member.size() == 0)
+			findAll();
+		members x = member.stream().filter(m -> m.getMemberPassword().equals(password)).findAny().orElse(null);
+		return x;
+	}
+	
+	public boolean LoginMember(String account, String password) {
+		if(findByAccount(account) != null && findByPassword(password) != null)
+			return true;
+		else
+			return false;
 	}
 
 	public boolean addMember(members m1) {

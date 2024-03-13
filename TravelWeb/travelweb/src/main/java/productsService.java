@@ -25,7 +25,7 @@ public class productsService {
 		return DAO.findAll();
 	}
 
-	@GET
+	/*@GET
 	@Path("/products/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
@@ -34,6 +34,17 @@ public class productsService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity("User Not Found").build();
+	}*/
+	
+	@GET
+	@Path("/products/{area}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getById(@PathParam("area") String area) {
+		products u = DAO.findByArea(area);
+		if (u != null)
+			return Response.ok().entity(u).build();
+		else
+			return Response.ok().entity("Product not found.").build();
 	}
 
 	@POST
@@ -42,9 +53,9 @@ public class productsService {
 	public Response add(products product) {
 		boolean flag = DAO.addProduct(product);
 		if (flag)
-			return Response.ok().entity("User add to Table").build();
+			return Response.ok().entity("User added.").build();
 		else
-			return Response.ok().entity(product.getProductId() + " User id already exists").build();
+			return Response.ok().entity("User id already exists. Add failed.").build();
 	}
 
 	@PUT
@@ -53,9 +64,9 @@ public class productsService {
 	public Response update(products product) {
 		boolean flag = DAO.updateProduct(product);
 		if (flag)
-			return Response.ok().entity("User updated ").build();
+			return Response.ok().entity("User updated.").build();
 		else
-			return Response.ok().entity(product.getProductId() + " User is not exists Update Failed").build();
+			return Response.ok().entity("User does not exist. Update failed.").build();
 	}
 
 	@DELETE
@@ -63,8 +74,8 @@ public class productsService {
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteProduct(id);
 		if (flag)
-			return Response.ok().entity("User Deleted ").build();
+			return Response.ok().entity("User deleted.").build();
 		else
-			return Response.ok().entity(id + " User is not exists Delete Failed").build();
+			return Response.ok().entity("User does not exist. Delete failed.").build();
 	}
 }

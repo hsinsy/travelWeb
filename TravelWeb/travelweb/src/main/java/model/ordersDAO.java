@@ -26,7 +26,14 @@ public class ordersDAO {
 	public orders findById(long id) throws NotFoundException {
 		if (order.size() == 0)
 			findAll();
-		orders x = order.stream().filter(o -> o.getOrderId() == id).findAny().orElse(null);
+		orders x = order.stream().filter(o -> o.getOrderId().equals(id)).findAny().orElse(null);
+		return x;
+	}
+	
+	public orders findByMemberId(long id) throws NotFoundException {
+		if (order.size() == 0)
+			findAll();
+		orders x = order.stream().filter(o -> o.getMemberId().equals(id)).findAny().orElse(null);
 		return x;
 	}
 

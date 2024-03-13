@@ -1,0 +1,57 @@
+travel info json format like:
+[
+    {
+        "endDate": "2024/03/28 (四)",
+        "productArea": "日本",
+        "productCode": "24JY324BRM-J",
+        "productId": 1,
+        "productImgUrl": "assets/image/japenTravelPage/TravelMainImg.png",
+        "productName": "春櫻四國松山",
+        "productPriceAdult": 51900,
+        "productPriceChild": 49900,
+        "startDate": "2024/03/24 (日)",
+        "travelDays": 5
+    },
+
+    {
+        "endDate": "2024/03/19 (二)",
+        "productArea": "韓國",
+        "productCode": "24JY324BRM-K",
+        "productId": 2,
+        "productImgUrl": "assets/image/koreaTravelPage/TravelMainImg.png",
+        "productName": "花現釜海鎮山",
+        "productPriceAdult": 25900,
+        "productPriceChild": 24900,
+        "startDate": "2024/03/17 (日)",
+        "travelDays": 3
+    },
+
+    {
+        "endDate": "2024/04/15 (一)",
+        "productArea": "歐洲",
+        "productCode": "24JY324BRM-E",
+        "productId": 3,
+        "productImgUrl": "assets/image/europeTravelPage/TravelMainImg.png",
+        "productName": "旗艦義大利送杜拜",
+        "productPriceAdult": 169900,
+        "productPriceChild": 168900,
+        "startDate": "2024/04/04 (四)",
+        "travelDays": 12
+    }
+]
+
+porder json format like:
+
+[
+    {
+        "endDate": "2024/03/28 (四)",
+        "memberId": 2,
+        "orderId": 1,
+        "productAmountAdult": 2,
+        "productAmountChild": 2,
+        "productCode": "24JY324BRM-J",
+        "productName": "春櫻四國松山",
+        "productTotalPrice": 203600,
+        "startDate": "2024/03/24 (日)"
+    }
+]

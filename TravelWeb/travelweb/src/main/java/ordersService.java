@@ -24,8 +24,8 @@ public class ordersService {
 	public List<orders> get() {
 		return DAO.findAll();
 	}
-
-	@GET
+	
+	/*@GET
 	@Path("/orders/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
@@ -34,6 +34,17 @@ public class ordersService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity("User Not Found").build();
+	}*/
+
+	@GET
+	@Path("/orders/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getById(@PathParam("id") Long id) {
+		orders u = DAO.findByMemberId(id);
+		if (u != null)
+			return Response.ok().entity(u).build();
+		else
+			return Response.ok().entity("Order not found.").build();
 	}
 
 	@POST
@@ -42,9 +53,9 @@ public class ordersService {
 	public Response add(orders order) {
 		boolean flag = DAO.addOrder(order);
 		if (flag)
-			return Response.ok().entity("User add to Table").build();
+			return Response.ok().entity("Order added.").build();
 		else
-			return Response.ok().entity(order.getOrderId() + " User id already exists").build();
+			return Response.ok().entity("Order id already exists. Add Failed.").build();
 	}
 
 	@PUT
@@ -53,9 +64,9 @@ public class ordersService {
 	public Response update(orders order) {
 		boolean flag = DAO.updateOrder(order);
 		if (flag)
-			return Response.ok().entity("User updated ").build();
+			return Response.ok().entity("Order updated.").build();
 		else
-			return Response.ok().entity(order.getOrderId() + " User is not exists Update Failed").build();
+			return Response.ok().entity("Order does not exist. Update Failed.").build();
 	}
 
 	@DELETE
@@ -63,8 +74,8 @@ public class ordersService {
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteOrder(id);
 		if (flag)
-			return Response.ok().entity("User Deleted ").build();
+			return Response.ok().entity("Order Deleted.").build();
 		else
-			return Response.ok().entity(id + " User is not exists Delete Failed").build();
+			return Response.ok().entity("Order does not exist. Delete Failed.").build();
 	}
 }

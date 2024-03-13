@@ -26,7 +26,14 @@ public class productsDAO {
 	public products findById(long id) throws NotFoundException {
 		if (product.size() == 0)
 			findAll();
-		products x = product.stream().filter(p -> p.getProductId() == id).findAny().orElse(null);
+		products x = product.stream().filter(p -> p.getProductId().equals(id)).findAny().orElse(null);
+		return x;
+	}
+	
+	public products findByArea(String area) throws NotFoundException {
+		if (product.size() == 0)
+			findAll();
+		products x = product.stream().filter(p -> p.getProductArea().equals(area)).findAny().orElse(null);
 		return x;
 	}
 

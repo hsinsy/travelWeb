@@ -9,28 +9,31 @@ import javax.persistence.Table;
 public class products {
 	@Id
 	private Long productId;
-	private String productNumber;
+	private String productCode;
 	private String productName;
-	private String productDestination;
-	private String productTime;
-	private String productDescription;
-	private String productNote;
+	private String productArea;
+	private String productImgUrl;
+	private String startDate;
+	private String endDate;
+	private Integer travelDays;
 	private Integer productPriceAdult;
 	private Integer productPriceChild;
 
 	public products() {
 	}
 
-	public products(Long productId, String productNumber, String productName, String productDestination, String productTime,
-			String productDescription, String productNote, Integer productPriceAdult, Integer productPriceChild) {
+	public products(Long productId, String productCode, String productName, String productArea,
+				    String productImgUrl, String startDate, String endDate, Integer travelDays,
+				    Integer productPriceAdult, Integer productPriceChild) {
 		super();
 		this.productId = productId;
-		this.productNumber = productNumber;
+		this.productCode = productCode;
 		this.productName = productName;
-		this.productDestination = productDestination;
-		this.productTime = productTime;
-		this.productDescription = productDescription;
-		this.productNote = productNote;
+		this.productArea = productArea;
+		this.productImgUrl = productImgUrl;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.travelDays = travelDays;
 		this.productPriceAdult = productPriceAdult;
 		this.productPriceChild = productPriceChild;
 	}
@@ -43,12 +46,12 @@ public class products {
 		this.productId = productId;
 	}
 	
-	public String getProductNumber() {
-		return productNumber;
+	public String getProductCode() {
+		return productCode;
 	}
 
-	public void setProductNumber(String productNumber) {
-		this.productNumber = productNumber;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 
 	public String getProductName() {
@@ -59,36 +62,44 @@ public class products {
 		this.productName = productName;
 	}
 
-	public String getProductDestination() {
-		return productDestination;
+	public String getProductArea() {
+		return productArea;
 	}
 
-	public void setProductDestination(String productDestination) {
-		this.productDestination = productDestination;
+	public void setProductArea(String productArea) {
+		this.productArea = productArea;
 	}
 
-	public String getProductTime() {
-		return productTime;
+	public String getProductImgUrl() {
+		return productImgUrl;
 	}
 
-	public void setProductTime(String productTime) {
-		this.productTime = productTime;
+	public void setProductImgUrl(String productImgUrl) {
+		this.productImgUrl = productImgUrl;
 	}
 
-	public String getProductDescription() {
-		return productDescription;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public String getProductNote() {
-		return productNote;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setProductNote(String productNote) {
-		this.productNote = productNote;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	
+	public Integer getTravelDays() {
+		return travelDays;
+	}
+
+	public void setTravelDays(Integer travelDays) {
+		this.travelDays = travelDays;
 	}
 
 	public Integer getProductPriceAdult() {
@@ -109,9 +120,9 @@ public class products {
 
 	@Override
 	public String toString() {
-		return "products [productId=" + productId + ", productNumber=" + productNumber + ", productName=" + productName + ", productDestination="
-				+ productDestination + ", productTime=" + productTime + ", productDescription=" + productDescription
-				+ ", productNote=" + productNote + ", productPriceAdult=" + productPriceAdult
+		return "products [productId=" + productId + ", productCode=" + productCode + ", productName=" + productName
+				+ ", productArea=" + productArea + ", productImgUrl=" + productImgUrl + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", travelDays=" + travelDays + ", productPriceAdult=" + productPriceAdult
 				+ ", productPriceChild=" + productPriceChild + "]";
 	}
 }

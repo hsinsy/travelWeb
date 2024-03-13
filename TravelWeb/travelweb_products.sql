@@ -26,17 +26,18 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `productId` int NOT NULL AUTO_INCREMENT,
-  `productNumber` varchar(10) NOT NULL,
+  `productCode` varchar(45) NOT NULL,
   `productName` varchar(45) NOT NULL,
-  `productDestination` varchar(45) NOT NULL,
-  `productTime` varchar(45) NOT NULL,
-  `productDescription` varchar(100) NOT NULL,
-  `productNote` varchar(100) DEFAULT NULL,
+  `productArea` varchar(45) NOT NULL,
+  `productImgUrl` varchar(100) NOT NULL,
+  `startDate` varchar(45) NOT NULL,
+  `endDate` varchar(45) NOT NULL,
+  `travelDays` int NOT NULL,
   `productPriceAdult` int NOT NULL,
   `productPriceChild` int NOT NULL,
   PRIMARY KEY (`productId`),
-  UNIQUE KEY `productNumber_UNIQUE` (`productNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `productNumber_UNIQUE` (`productCode`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +46,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'JP11','日本三天兩夜','日本北海道','2024/10/11-2024/10/13','北海道雪國之旅','',1200,600),(2,'KR12','韓國兩天一夜','韓國首爾','2024/05/20-2024/05/21','韓國人文體驗之旅','',1500,1000);
+INSERT INTO `products` VALUES (1,'24JY324BRM-J','春櫻四國松山','日本','assets/image/japenTravelPage/TravelMainImg.png','2024/03/24 (日)','2024/03/28 (四)',5,51900,49900),(2,'24JY324BRM-K','花現釜海鎮山','韓國','assets/image/koreaTravelPage/TravelMainImg.png','2024/03/17 (日)','2024/03/19 (二)',3,25900,24900),(3,'24JY324BRM-E','旗艦義大利送杜拜','歐洲','assets/image/europeTravelPage/TravelMainImg.png','2024/04/04 (四)','2024/04/15 (一)',12,169900,168900);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-04 16:43:16
+-- Dump completed on 2024-03-13 12:02:06
