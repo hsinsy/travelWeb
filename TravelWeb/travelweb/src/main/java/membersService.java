@@ -11,6 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
+
 import model.members;
 import model.membersDAO;
 import model.products;
@@ -18,6 +20,7 @@ import model.products;
 @Path("/")
 public class membersService {
 	membersDAO DAO = new membersDAO();
+	Gson g = new Gson(); 
 
 	@GET
 	@Path("/members")
@@ -31,11 +34,11 @@ public class membersService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
 		members u = DAO.findById(id);
-		members e = new members();
+		String str1 = g.toJson("User not found.");
 		if (u != null)
 			return Response.ok().entity(u).build();
 		else
-			return Response.ok().entity(e).build();
+			return Response.ok().entity(str1).build();
 	}
 	
 	/*@GET
@@ -51,47 +54,55 @@ public class membersService {
 	
 	@GET
 	@Path("/members/{account}/{password}")
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(@PathParam("account") String account, @PathParam("password") String password) {
 		boolean flag = DAO.LoginMember(account, password);
+		String str1 = g.toJson("Login Success");
+		String str2 = g.toJson("User account or password is wrong. Login failed.");
 		if(flag)
-			return Response.ok().entity("Login success.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User account or password is wrong. Login failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 
 	@POST
 	@Path("/members/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(members member) {
 		boolean flag = DAO.addMember(member);
+		String str1 = g.toJson("User added.");
+		String str2 = g.toJson("User id already exists. Add Failed.");
 		if (flag)
-			return Response.ok().entity("User added.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User id already exists. Add Failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 
 	@PUT
 	@Path("/members/update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(members member) {
 		boolean flag = DAO.updateMember(member);
+		String str1 = g.toJson("User updated.");
+		String str2 = g.toJson("User does not exist. Update failed.");
 		if (flag)
-			return Response.ok().entity("User updated.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User does not exist. Update failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 
 	@DELETE
 	@Path("/members/{id}")
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteMember(id);
+		String str1 = g.toJson("User deleted.");
+		String str2 = g.toJson("User does not exist. Delete failed.");
 		if (flag)
-			return Response.ok().entity("User deleted.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User does not exist. Delete failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 }

@@ -11,12 +11,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
+
 import model.products;
 import model.productsDAO;
 
 @Path("/")
 public class productsService {
 	productsDAO DAO = new productsDAO();
+	Gson g = new Gson();
 
 	@GET
 	@Path("/products")
@@ -41,45 +44,51 @@ public class productsService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("area") String area) {
 		products u = DAO.findByArea(area);
-		products e = new products();
+		String str1 = g.toJson("Product not found.");
 		if (u != null)
 			return Response.ok().entity(u).build();
 		else
-			return Response.ok().entity(e).build();
+			return Response.ok().entity(str1).build();
 	}
 
 	@POST
 	@Path("/products/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(products product) {
 		boolean flag = DAO.addProduct(product);
+		String str1 = g.toJson("Product added.");
+		String str2 = g.toJson("Product id already exists. Add failed.");
 		if (flag)
-			return Response.ok().entity("User added.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User id already exists. Add failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 
 	@PUT
 	@Path("/products/update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(products product) {
 		boolean flag = DAO.updateProduct(product);
+		String str1 = g.toJson("Product updated.");
+		String str2 = g.toJson("Product does not exist. Update failed.");
 		if (flag)
-			return Response.ok().entity("User updated.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User does not exist. Update failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 
 	@DELETE
 	@Path("/products/{id}")
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteProduct(id);
+		String str1 = g.toJson("Product deleted.");
+		String str2 = g.toJson("Product does not exist. Delete failed.");
 		if (flag)
-			return Response.ok().entity("User deleted.").build();
+			return Response.ok().entity(str1).build();
 		else
-			return Response.ok().entity("User does not exist. Delete failed.").build();
+			return Response.ok().entity(str2).build();
 	}
 }
