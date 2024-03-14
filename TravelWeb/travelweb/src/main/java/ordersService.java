@@ -25,31 +25,23 @@ public class ordersService {
 		return DAO.findAll();
 	}
 	
-	/*@GET
-	@Path("/orders/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getById(@PathParam("id") Long id) {
-		orders u = DAO.findById(id);
-		if (u != null)
-			return Response.ok().entity(u).build();
-		else
-			return Response.ok().entity("User Not Found").build();
-	}*/
 
 	@GET
 	@Path("/orders/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
 		orders u = DAO.findByMemberId(id);
+		orders e = new orders();
 		if (u != null)
 			return Response.ok().entity(u).build();
 		else
-			return Response.ok().entity("Order not found.").build();
+			return Response.ok().entity(e).build();
 	}
 
 	@POST
 	@Path("/orders/add")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response add(orders order) {
 		boolean flag = DAO.addOrder(order);
 		if (flag)
@@ -61,6 +53,7 @@ public class ordersService {
 	@PUT
 	@Path("/orders/update")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response update(orders order) {
 		boolean flag = DAO.updateOrder(order);
 		if (flag)
@@ -71,6 +64,7 @@ public class ordersService {
 
 	@DELETE
 	@Path("/orders/{id}")
+	@Produces(MediaType.TEXT_HTML)
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteOrder(id);
 		if (flag)

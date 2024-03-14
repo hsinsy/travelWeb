@@ -41,15 +41,17 @@ public class productsService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("area") String area) {
 		products u = DAO.findByArea(area);
+		products e = new products();
 		if (u != null)
 			return Response.ok().entity(u).build();
 		else
-			return Response.ok().entity("Product not found.").build();
+			return Response.ok().entity(e).build();
 	}
 
 	@POST
 	@Path("/products/add")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response add(products product) {
 		boolean flag = DAO.addProduct(product);
 		if (flag)
@@ -61,6 +63,7 @@ public class productsService {
 	@PUT
 	@Path("/products/update")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response update(products product) {
 		boolean flag = DAO.updateProduct(product);
 		if (flag)
@@ -71,6 +74,7 @@ public class productsService {
 
 	@DELETE
 	@Path("/products/{id}")
+	@Produces(MediaType.TEXT_HTML)
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteProduct(id);
 		if (flag)

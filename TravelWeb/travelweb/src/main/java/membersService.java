@@ -26,18 +26,19 @@ public class membersService {
 		return DAO.findAll();
 	}
 	
-	/*@GET
+	@GET
 	@Path("/members/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
 		members u = DAO.findById(id);
+		members e = new members();
 		if (u != null)
 			return Response.ok().entity(u).build();
 		else
-			return Response.ok().entity("User Not Found").build();
-	}*/
+			return Response.ok().entity(e).build();
+	}
 	
-	@GET
+	/*@GET
 	@Path("/members/{account}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getByAccount(@PathParam("account") String account) {
@@ -46,11 +47,11 @@ public class membersService {
 			return Response.ok().entity(a).build();
 		else
 			return Response.ok().entity("User not found.").build();	
-	}
+	}*/
 	
 	@GET
 	@Path("/members/{account}/{password}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response login(@PathParam("account") String account, @PathParam("password") String password) {
 		boolean flag = DAO.LoginMember(account, password);
 		if(flag)
@@ -62,6 +63,7 @@ public class membersService {
 	@POST
 	@Path("/members/add")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response add(members member) {
 		boolean flag = DAO.addMember(member);
 		if (flag)
@@ -73,6 +75,7 @@ public class membersService {
 	@PUT
 	@Path("/members/update")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public Response update(members member) {
 		boolean flag = DAO.updateMember(member);
 		if (flag)
@@ -83,6 +86,7 @@ public class membersService {
 
 	@DELETE
 	@Path("/members/{id}")
+	@Produces(MediaType.TEXT_HTML)
 	public Response delete(@PathParam("id") long id) {
 		boolean flag = DAO.deleteMember(id);
 		if (flag)
