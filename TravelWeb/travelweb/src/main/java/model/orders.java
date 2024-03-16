@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class orders {
 	@Id
 	private Long orderId;
@@ -21,9 +21,8 @@ public class orders {
 	public orders() {
 	}
 
-	public orders(Long orderId, Long memberId, String productCode, String productName,
-				  String startDate, String endDate, Integer productAmountAdult,
-				  Integer productAmountChild, Integer productTotalPrice) {
+	public orders(Long orderId, Long memberId, String productCode, String productName, String startDate, String endDate,
+			Integer productAmountAdult, Integer productAmountChild, Integer productTotalPrice) {
 		super();
 		this.orderId = orderId;
 		this.memberId = memberId;
@@ -75,7 +74,7 @@ public class orders {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	
+
 	public String getEndDate() {
 		return endDate;
 	}

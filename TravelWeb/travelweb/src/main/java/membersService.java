@@ -20,7 +20,7 @@ import model.products;
 @Path("/")
 public class membersService {
 	membersDAO DAO = new membersDAO();
-	Gson g = new Gson(); 
+	Gson g = new Gson();
 
 	@GET
 	@Path("/members")
@@ -28,7 +28,7 @@ public class membersService {
 	public List<members> get() {
 		return DAO.findAll();
 	}
-	
+
 	@GET
 	@Path("/members/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -40,18 +40,7 @@ public class membersService {
 		else
 			return Response.ok().entity(str1).build();
 	}
-	
-	/*@GET
-	@Path("/members/{account}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getByAccount(@PathParam("account") String account) {
-		members a = DAO.findByAccount(account);
-		if (a != null)
-			return Response.ok().entity(a).build();
-		else
-			return Response.ok().entity("User not found.").build();	
-	}*/
-	
+
 	@GET
 	@Path("/members/{account}/{password}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -59,7 +48,7 @@ public class membersService {
 		boolean flag = DAO.LoginMember(account, password);
 		String str1 = g.toJson("Login Success");
 		String str2 = g.toJson("User account or password is wrong. Login failed.");
-		if(flag)
+		if (flag)
 			return Response.ok().entity(str1).build();
 		else
 			return Response.ok().entity(str2).build();

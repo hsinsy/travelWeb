@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
 public class products {
 	@Id
 	private Long productId;
@@ -22,9 +22,9 @@ public class products {
 	public products() {
 	}
 
-	public products(Long productId, String productCode, String productName, String productArea,
-				    String productImgUrl, String startDate, String endDate, Integer travelDays,
-				    Integer productPriceAdult, Integer productPriceChild) {
+	public products(Long productId, String productCode, String productName, String productArea, String productImgUrl,
+			String startDate, String endDate, Integer travelDays, Integer productPriceAdult,
+			Integer productPriceChild) {
 		super();
 		this.productId = productId;
 		this.productCode = productCode;
@@ -45,7 +45,7 @@ public class products {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-	
+
 	public String getProductCode() {
 		return productCode;
 	}
@@ -93,7 +93,7 @@ public class products {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
+
 	public Integer getTravelDays() {
 		return travelDays;
 	}

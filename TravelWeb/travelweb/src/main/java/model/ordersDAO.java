@@ -30,12 +30,18 @@ public class ordersDAO {
 		return x;
 	}
 	
-	public orders findByMemberId(long id) throws NotFoundException {
+	public List<orders> findByMemberId(long id) {
+		Query query = getManager().createQuery("select o from orders o where orders.memberId=?1");
+		order = (List<orders>) query.getResultList();
+		return order;
+	}
+
+	/*public orders findByMemberId(long id) throws NotFoundException {
 		if (order.size() == 0)
 			findAll();
 		orders x = order.stream().filter(o -> o.getMemberId().equals(id)).findAny().orElse(null);
 		return x;
-	}
+	}*/
 
 	public boolean addOrder(orders o1) {
 		if (order.size() == 0)

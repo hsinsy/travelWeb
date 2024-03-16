@@ -28,8 +28,19 @@ public class ordersService {
 		return DAO.findAll();
 	}
 	
-
 	@GET
+	@Path("/orders/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getById(@PathParam("id") Long id) {
+		List<orders> u = DAO.findByMemberId(id);
+		String str1 = g.toJson("Order not found.");
+		if (u != null)
+			return Response.ok().entity(u).build();
+		else
+			return Response.ok().entity(str1).build();
+	}
+	
+	/*@GET
 	@Path("/orders/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
@@ -39,7 +50,7 @@ public class ordersService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity(str1).build();
-	}
+	}*/
 
 	@POST
 	@Path("/orders/add")
@@ -47,12 +58,11 @@ public class ordersService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(orders order) {
 		boolean flag = DAO.addOrder(order);
-		String str1 = g.toJson("Order added.");
-		String str2 = g.toJson("Order id already exists. Add Failed.");
+		String str1 = g.toJson("Order id already exists. Add Failed.");
 		if (flag)
-			return Response.ok().entity(str1).build();
+			return Response.ok().entity(DAO.findAll()).build();
 		else
-			return Response.ok().entity(str2).build();
+			return Response.ok().entity(str1).build();
 	}
 
 	@PUT
