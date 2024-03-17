@@ -29,7 +29,7 @@ public class productsService {
 		return DAO.findAll();
 	}
 
-	@GET
+	/*@GET
 	@Path("/products/{area}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getByArea(@PathParam("area") String area) {
@@ -39,9 +39,9 @@ public class productsService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity(str1).build();
-	}
+	}*/
 	
-	/*@GET
+	@GET
 	@Path("/products/{area}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getByArea(@PathParam("area") String area) {
@@ -51,7 +51,7 @@ public class productsService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity(str1).build();
-	}*/
+	}
 
 	@POST
 	@Path("/products/add")
@@ -59,11 +59,12 @@ public class productsService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(products product) {
 		boolean flag = DAO.addProduct(product);
-		String str1 = g.toJson("Product id already exists. Add failed.");
+		String str1 = g.toJson("Product added.");
+		String str2 = g.toJson("Product id already exists. Add failed.");
 		if (flag)
-			return Response.ok().entity(DAO.findAll()).build();
-		else
 			return Response.ok().entity(str1).build();
+		else
+			return Response.ok().entity(str2).build();
 	}
 
 	@PUT

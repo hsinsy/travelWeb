@@ -30,18 +30,18 @@ public class productsDAO {
 		return x;
 	}
 	
-	public List<products> findByArea(String area ) {
+	/*public List<products> findByArea(String area ) {
 		Query query = getManager().createQuery("select p from products p where products.area=?1");
 		product = (List<products>) query.getResultList();
 		return product;
-	}
+	}*/
 
-	/*public products findByArea(String area) throws NotFoundException {
+	public products findByArea(String area) throws NotFoundException {
 		if (product.size() == 0)
 			findAll();
 		products x = product.stream().filter(p -> p.getProductArea().equals(area)).findAny().orElse(null);
 		return x;
-	}*/
+	}
 
 	public boolean addProduct(products p1) {
 		if (product.size() == 0)
