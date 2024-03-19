@@ -1,0 +1,36 @@
+<div
+  class="footerContainer"
+  style="display: flex; justify-content: center; background-color: #e9d3ee">
+  <div style="display: flex; justify-content: center; width: 80%; margin: 30px">
+    <div style="display: flex; flex-direction: column; flex-grow: 1">
+      <app-logo-btn
+        [bgColor]="bgcolor"
+        style="background-color: #e9d3ee; width: 300px" />
+      <p style="margin-top: 30px">{{copyRight}}</p>
+    </div>
+
+    <div
+      *ngFor="let ftl of footerTextList ; let i = index"
+      style="display: flex; flex-grow: 1">
+      <div style="flex-grow: 1">
+        <p style="font-weight: bold">{{ftl.title | translate}}</p>
+
+        <div *ngFor="let tl of ftl.textList ">
+          <button
+            mat-button
+            *ngIf="tl.path"
+            [routerLinkActiveOptions]="{exact: true}"
+            [routerLink]="tl.path| localize"
+            routerLinkActive="active">
+            {{tl.text | translate}}
+          </button>
+          <a mat-button *ngIf="!tl.path && i === 0" href="mailto:abc@gmail.com">
+            {{tl.text | translate}}
+          </a>
+
+          <p *ngIf="i === 1">{{tl.text | translate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

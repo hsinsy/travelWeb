@@ -1,0 +1,125 @@
+<p>shopping-cart works!</p>
+<div class="rectangle-container bgContainer">
+  <!-- app.component.html -->
+
+  <ng-container *ngFor="let cartItem of cart">
+    <div>
+      <div style="display: inline-block">
+        <img
+          src="{{ cartItem.productImgUrl }}"
+          alt="Trip Image"
+          width="200"
+          height="100" />
+      </div>
+      <div style="display: inline-block; margin-left: 30px">
+        <div style="text-align: left">
+          <h1 style="font-size: 14px">國家: {{ cartItem.productArea }}</h1>
+          <h1 style="font-size: 14px">行程名稱: {{ cartItem.productName }}</h1>
+        </div>
+      </div>
+
+      <h1 style="font-size: 12px">產品代碼: {{ cartItem.productCode }}</h1>
+      <h1 style="font-size: 12px">出發日期: {{ cartItem.startDate }}</h1>
+      <h1 style="font-size: 12px">
+        結束日期: {{ cartItem.endDate }} &nbsp;&nbsp;&nbsp;共幾天: {{
+        cartItem.travelDays }}天
+      </h1>
+      <div>
+        <!-- Japan trip info -->
+        <h1 style="font-size: 12px">
+          成人價格: {{ cartItem.productPriceAdult }}元 &nbsp;&nbsp;
+          <button (click)="handleMinus(cartItem, 'adult')">-</button>
+          {{ cartItem.productAmountAdult }}
+          <button (click)="handlePlus(cartItem, 'adult')">+</button>
+          &nbsp;&nbsp;&nbsp;共: {{ countSum(cartItem.productPriceAdult,
+          cartItem.productAmountAdult) }}元
+        </h1>
+        <h1 style="font-size: 12px">
+          兒童價格: {{ cartItem.productPriceChild }}元&nbsp;&nbsp;&nbsp;
+          <button (click)="childrenMinus(cartItem, 'children')">-</button>
+          {{ cartItem.productAmountChild }}
+          <button (click)="childrenPlus(cartItem, 'children')">+</button>
+          &nbsp;&nbsp;&nbsp;共: {{ countSum(cartItem.productPriceChild,
+          cartItem.productAmountChild) }}元
+        </h1>
+      </div>
+      <div>
+        <h1 style="font-size: 12px">
+          小計: {{ countSum(cartItem.productPriceAdult,
+          cartItem.productAmountAdult) + countSum(cartItem.productPriceChild,
+          cartItem.productAmountChild) }}元
+        </h1>
+      </div>
+    </div>
+
+    <mat-divider
+      style="border: 1px solid black; margin: 30px 0px"></mat-divider>
+  </ng-container>
+  <h1 style="font-size: 24px; text-align: right">
+    總額: {{ calculateTotal() }}元
+  </h1>
+
+  <button (click)="clearCart()" style="font-size: 16px">重置</button>
+
+  <button (click)="removeItem()" style="font-size: 16px">Delete</button>
+
+  <!--<hr />-->
+  <div class="rectangle-container">
+    <p style="font-size: 24px; margin-bottom: 20px">報名須知</p>
+    <p style="font-size: 16px; margin-bottom: 0px">
+      1.報名完成後，要約即產生效力，若變更或取消行程，依要約內容辦理。<br />
+      2.報名時，請確認護照之有效期限在行程回國日起算六個月以上，申辦新護照者約需十一日。簽證工作天視各地區而定。<br />
+      3.若為孕婦或罹患重大疾病者，請直接向本公司承辦人員辦理報名，並告知個人狀況，如未事先告知而致無法成行或衍生其他問題，需自行負責。
+    </p>
+  </div>
+
+  <div class="rectangle_2-container">
+    <div class="rectangle_2">
+      <!-- 第一段 -->
+      <p style="font-size: 24px; margin-bottom: 20px">
+        旅遊契約書
+        <a
+          id="downloadLink"
+          href="https://info.liontravel.com/category/zh-tw/orderinfo/contract"
+          target="_blank"
+          style="float: right">
+          點我查看PDF
+        </a>
+      </p>
+
+      <!-- 第二段和第三段同一行 -->
+      <div style="text-align: center">
+        <!-- 第二段 -->
+        <p style="display: inline-block; font-size: 20px; margin-right: 20px">
+          <input
+            type="checkbox"
+            id="agreement-checkbox"
+            (change)="checkboxChanged($event)" />
+          <label for="agreement-checkbox"
+            >我已經閱讀了「報名須知」與「旅遊契約書」，並同意其內容。</label
+          >
+        </p>
+
+        <!-- 第三段 -->
+        <div style="display: inline-block">
+          <!-- 下一頁按鈕 -->
+          <button
+            [routerLinkActiveOptions]="{exact: true}"
+            [routerLink]="path| localize"
+            routerLinkActive="active"
+            [disabled]="!checkboxChecked"
+            style="
+              font-size: 12px;
+              border: 0.5px solid black;
+              padding: 10px 10px;
+            "
+            (click)="setCartTicketInfo()">
+            <!-- 調整按鈕大小 -->
+            下一頁
+          </button>
+        </div>
+      </div>
+    </div>
+    <app-interval-block />
+  </div>
+</div>

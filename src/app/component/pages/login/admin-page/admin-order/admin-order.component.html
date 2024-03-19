@@ -1,0 +1,107 @@
+<div style="margin-top: 40px">
+  <div style="display: flex; justify-content: center">
+    <mat-form-field class="example-full-width">
+      <mat-label>Member ID</mat-label>
+      <input matInput placeholder="Ex. 1" #box (input)="onInput(box.value)" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin: 0px 30px; height: 56px"
+      (click)="onSearchByID()">
+      search
+    </button>
+    <button
+      mat-raised-button
+      style="height: 56px; background-color: #5fcaf8; color: white"
+      (click)="onSearchAll()">
+      search all
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin: 0px 30px; height: 56px"
+      (click)="onAddOrders(fakeOrders)">
+      add
+    </button>
+  </div>
+
+  <hr style="margin-bottom: 40px" />
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    style="background-color: ghostwhite">
+    <!-- orderId Column -->
+    <ng-container matColumnDef="orderId">
+      <th mat-header-cell *matHeaderCellDef>orderId</th>
+      <td mat-cell *matCellDef="let element">{{element.orderId}}</td>
+    </ng-container>
+
+    <!-- memberId Column -->
+    <ng-container matColumnDef="memberId">
+      <th mat-header-cell *matHeaderCellDef>memberId</th>
+      <td mat-cell *matCellDef="let element">{{element.memberId}}</td>
+    </ng-container>
+
+    <!-- productCode Column -->
+    <ng-container matColumnDef="productCode">
+      <th mat-header-cell *matHeaderCellDef>productCode</th>
+      <td mat-cell *matCellDef="let element">{{element.productCode}}</td>
+    </ng-container>
+
+    <!-- productName Column -->
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef>productName</th>
+      <td mat-cell *matCellDef="let element">{{element.productName}}</td>
+    </ng-container>
+
+    <!-- startDate Column -->
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>startDate</th>
+      <td mat-cell *matCellDef="let element">{{element.startDate}}</td>
+    </ng-container>
+
+    <!-- endDate Column -->
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>endDate</th>
+      <td mat-cell *matCellDef="let element">{{element.endDate}}</td>
+    </ng-container>
+
+    <!-- productAmountAdult Column -->
+    <ng-container matColumnDef="productAmountAdult">
+      <th mat-header-cell *matHeaderCellDef>productAmountAdult</th>
+      <td mat-cell *matCellDef="let element">{{element.productAmountAdult}}</td>
+    </ng-container>
+
+    <!-- productAmountChild Column -->
+    <ng-container matColumnDef="productAmountChild">
+      <th mat-header-cell *matHeaderCellDef>productAmountChild</th>
+      <td mat-cell *matCellDef="let element">{{element.productAmountChild}}</td>
+    </ng-container>
+
+    <!-- productTotalPrice Column -->
+    <ng-container matColumnDef="productTotalPrice">
+      <th mat-header-cell *matHeaderCellDef>productTotalPrice</th>
+      <td mat-cell *matCellDef="let element">{{element.productTotalPrice}}</td>
+    </ng-container>
+
+    <!-- delete Column -->
+    <!-- <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>delete</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          (click)="onDeleteMember(element.orderId)"
+          [style.display]="element.memberId === undefined? 'none':'block'">
+          <span class="material-icons black"> delete </span>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

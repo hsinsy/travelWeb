@@ -1,0 +1,60 @@
+<app-interval-block />
+<div>
+  <p style="white-space: pre-line; font-size: 35px; line-height: normal">
+    {{productTopBlockContent.title | translate}}
+  </p>
+</div>
+<div style="display: flex; margin-top: 30px">
+  <div style="width: 80%">
+    <img
+      [src]="productTopBlockContent.mainImgurl"
+      alt="travelMainImg"
+      style="width: 100%" />
+  </div>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+    ">
+    <div style="white-space: pre-line; margin-bottom: 30px">
+      <h2>
+        {{'JPTOURCODE' | translate}}:
+        {{productTopBlockContent.travelInfo.productCode}}
+      </h2>
+      <h2>
+        {{'JPDEPARTUREDATE'|translate}}:{{productTopBlockContent.travelInfo.startDate}}
+      </h2>
+      <h2>
+        {{'JPRETURNDATE'|translate}}:{{productTopBlockContent.travelInfo.endDate}}
+      </h2>
+      <h2>{{productTopBlockContent.travelInfo.travelDays}} Days</h2>
+      <br />
+      <h2>
+        {{'JPADULTPRICE'|translate}}:{{productTopBlockContent.travelInfo.adultTicketPrice}}
+      </h2>
+      <h2>
+        {{'JPCHILDPRICE'|translate}}:{{productTopBlockContent.travelInfo.childrenTicketPrice}}
+      </h2>
+    </div>
+    <div>
+      <button mat-stroked-button style="margin-right: 30px; font-size: 18px">
+        {{'ITINERARY'|translate}}
+      </button>
+      <button
+        mat-stroked-button
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="path| localize"
+        routerLinkActive="active"
+        style="font-size: 18px">
+        {{'SIGNUP'|translate}}
+      </button>
+    </div>
+  </div>
+</div>
+<img
+  [src]="productTopBlockContent.bannerImgurl"
+  alt="travelMainImg"
+  style="width: 100%; margin-top: 60px" />

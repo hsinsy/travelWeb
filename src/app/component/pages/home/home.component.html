@@ -1,0 +1,34 @@
+<div class="homeComponentContainer">
+  <div
+    class="slideShowContainer"
+    style="display: flex; justify-content: center">
+    <img
+      mat-card-image
+      [src]="slideShowUrlList[currentSlideShowNum]"
+      alt="SideShowImg"
+      style="margin-top: 110px; width: 80%" />
+  </div>
+  <!-- <button (click)="changeSlideShow()">change</button> -->
+  <app-interval-block />
+  <div
+    style="display: flex; flex-direction: column; margin-bottom: 30px"
+    *ngFor="let rcl of recommandCardList">
+    <div style="display: flex; flex-direction: row; justify-content: center">
+      <h1 style="margin-right: 20px">{{rcl.travelCommand | translate}}</h1>
+      <h1>{{rcl.content | translate}}</h1>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: center">
+      <div
+        style="display: flex; flex-direction: column; margin: 10px"
+        *ngFor="let item of rcl.locationList">
+        <img
+          [ngSrc]="item.url"
+          alt="JapenImg"
+          width="300"
+          height="180"
+          priority />
+        <p style="text-align: center">◆{{item.content | translate}}</p>
+      </div>
+    </div>
+  </div>
+</div>
