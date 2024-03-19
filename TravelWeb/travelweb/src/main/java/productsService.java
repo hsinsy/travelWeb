@@ -29,7 +29,7 @@ public class productsService {
 		return DAO.findAll();
 	}
 
-	/*@GET
+	@GET
 	@Path("/products/{area}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getByArea(@PathParam("area") String area) {
@@ -39,19 +39,19 @@ public class productsService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity(str1).build();
-	}*/
-	
-	@GET
-	@Path("/products/{area}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getByArea(@PathParam("area") String area) {
-		products u = DAO.findByArea(area);
-		String str1 = g.toJson("Product not found.");
-		if (u != null)
-			return Response.ok().entity(u).build();
-		else
-			return Response.ok().entity(str1).build();
 	}
+	
+//	@GET
+//	@Path("/products/{area}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response getByArea(@PathParam("area") String area) {
+//		products u = DAO.findByArea(area);
+//		String str1 = g.toJson("Product not found.");
+//		if (u != null)
+//			return Response.ok().entity(u).build();
+//		else
+//			return Response.ok().entity(str1).build();
+//	}
 
 	@POST
 	@Path("/products/add")

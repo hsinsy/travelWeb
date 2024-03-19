@@ -45,13 +45,30 @@ public class membersService {
 	@Path("/members/{account}/{password}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(@PathParam("account") String account, @PathParam("password") String password) {
-		boolean flag = DAO.LoginMember(account, password);
-		String str1 = g.toJson("Login Success");
-		String str2 = g.toJson("User account or password is wrong. Login failed.");
-		if (flag)
-			return Response.ok().entity(str1).build();
-		else
-			return Response.ok().entity(str2).build();
+		System.out.println("HERE");
+		System.out.println("account: "+ account);
+		System.out.println("password: "+ password);
+		
+		if(password.equals("-1")) {
+			members u = DAO.findByAccount(account);
+			String str1 = g.toJson("User not found.");
+			if (u != null)
+				return Response.ok().entity(u).build();
+			else
+				return Response.ok().entity(str1).build();
+		}else {
+			boolean flag = DAO.LoginMember(account, password);
+			
+			members u;
+			String str2 = g.toJson("User account or password is wrong. Login failed.");
+			if (flag) {
+				u = DAO.findByAccount(account);
+				return Response.ok().entity(u).build();
+			}
+			else {
+				return Response.ok().entity(str2).build();
+			}
+		}
 	}
 
 	@POST

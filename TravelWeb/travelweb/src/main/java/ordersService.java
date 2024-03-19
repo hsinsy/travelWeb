@@ -28,7 +28,7 @@ public class ordersService {
 		return DAO.findAll();
 	}
 	
-	/*@GET
+	@GET
 	@Path("/orders/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getById(@PathParam("id") Long id) {
@@ -38,19 +38,19 @@ public class ordersService {
 			return Response.ok().entity(u).build();
 		else
 			return Response.ok().entity(str1).build();
-	}*/
-	
-	@GET
-	@Path("/orders/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getById(@PathParam("id") Long id) {
-		orders u = DAO.findByMemberId(id);
-		String str1 = g.toJson("Order not found.");
-		if (u != null)
-			return Response.ok().entity(u).build();
-		else
-			return Response.ok().entity(str1).build();
 	}
+	
+//	@GET
+//	@Path("/orders/{id}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response getById(@PathParam("id") Long id) {
+//		orders u = DAO.findByMemberId(id);
+//		String str1 = g.toJson("Order not found.");
+//		if (u != null)
+//			return Response.ok().entity(u).build();
+//		else
+//			return Response.ok().entity(str1).build();
+//	}
 
 	@POST
 	@Path("/orders/add")

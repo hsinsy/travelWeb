@@ -20,6 +20,8 @@ public class ordersDAO {
 	public List<orders> findAll() {
 		Query query = getManager().createQuery("select o from orders o");
 		order = (List<orders>) query.getResultList();
+		System.out.println("order: ");
+		System.out.println(order);
 		return order;
 	}
 
@@ -30,18 +32,21 @@ public class ordersDAO {
 		return x;
 	}
 	
-	/*public List<orders> findByMemberId(long id) {
-		Query query = getManager().createQuery("select o from orders o where orders.memberId=?1");
+	public List<orders> findByMemberId(long id) {
+		Query query = getManager().createQuery("select o from orders o where o.memberId=?1");
+		query.setParameter(1, id);
 		order = (List<orders>) query.getResultList();
+		System.out.println("order: ");
+		System.out.println(order);
 		return order;
-	}*/
-
-	public orders findByMemberId(long id) throws NotFoundException {
-		if (order.size() == 0)
-			findAll();
-		orders x = order.stream().filter(o -> o.getMemberId().equals(id)).findAny().orElse(null);
-		return x;
 	}
+
+//	public orders findByMemberId(long id) throws NotFoundException {
+//		if (order.size() == 0)
+//			findAll();
+//		orders x = order.stream().filter(o -> o.getMemberId().equals(id)).findAny().orElse(null);
+//		return x;
+//	}
 
 	public boolean addOrder(orders o1) {
 		if (order.size() == 0)
