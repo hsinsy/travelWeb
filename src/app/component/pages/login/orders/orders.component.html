@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="orders-page">
+    <div class="title">
+      <div *ngIf="orders">
+        <h2>訂單／購買查詢</h2>
+        <ul>
+          <li *ngFor="let order of orders" class="order-item">
+            <div class="order-details">
+              <p>訂單編號: {{ order.orderId }}</p>
+              <p>會員編號: {{ order.memberId }}</p>
+              <p>行程名稱: {{ order.productName }}</p>
+              <p>行程代碼: {{ order.productCode }}</p>
+              <p>出發日期: {{ order.startDate }}</p>
+              <p>回程日期: {{ order.endDate }}</p>
+              <p>成人人數: {{ order.productAmountAdult }}</p>
+              <p>兒童人數: {{ order.productAmountChild }}</p>
+              <p>訂單金額&#36;: {{ order.productTotalPrice }}</p>
+            </div>
+          </li>
+        </ul>
+
+        <ng-template #noOrders>
+          <p>No orders found.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

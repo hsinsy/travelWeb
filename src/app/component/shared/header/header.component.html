@@ -1,0 +1,45 @@
+<div>
+  <mat-toolbar style="position: fixed; z-index: 99">
+    <app-logo-btn [bgColor]="bgcolor" />
+    <span class="example-spacer"></span>
+
+    <div *ngFor="let hbm of headerBtnList">
+      <button
+        mat-flat-button
+        *ngIf="hbm.isFlatBtn === true; else iconBtn"
+        [color]="(hbm.isWarn)? 'warn':''"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="hbm.path? (hbm.path| localize):null"
+        routerLinkActive="active">
+        {{hbm.btnText | translate}}
+      </button>
+
+      <ng-template #iconBtn>
+        <button mat-icon-button *ngIf="hbm.isMenu" [matMenuTriggerFor]="menu">
+          <span class="material-icons black"> {{hbm.btnText}} </span>
+        </button>
+        <button
+          mat-icon-button
+          *ngIf="hbm.path"
+          class="icon button"
+          [routerLinkActiveOptions]="{exact: true}"
+          [routerLink]="hbm.path| localize"
+          routerLinkActive="active">
+          <span class="material-icons black"> {{hbm.btnText}} </span>
+        </button>
+      </ng-template>
+    </div>
+
+    <!-- language menu -->
+    <mat-menu #menu="matMenu">
+      <div *ngFor="let locale of locales">
+        <button
+          mat-menu-item
+          routerLink="/{{locale[0]}}/{{currentUrl}}"
+          routerLinkActive="active">
+          <span>{{locale[1]}}</span>
+        </button>
+      </div>
+    </mat-menu>
+  </mat-toolbar>
+</div>

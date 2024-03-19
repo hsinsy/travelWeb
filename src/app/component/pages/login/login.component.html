@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="login-page">
+    <div class="form">
+      <div class="title">
+        <h2>會員登入</h2>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input
+          type="text"
+          placeholder="帳號名稱 Username"
+          formControlName="memberAccount"
+          class="box"
+          [ngClass]="{ 'is-invalid': submitted && f['memberAccount'].errors }" />
+
+        <div
+          *ngIf="submitted && f['memberAccount'].errors"
+          class="invalid-feedback">
+          <div *ngIf="f['memberAccount'].errors">請輸入帳號名稱</div>
+        </div>
+
+        <div></div>
+        <input
+          type="password"
+          placeholder="密碼 Password"
+          formControlName="memberPassword"
+          class="box"
+          [ngClass]="{ 'is-invalid': submitted && f['memberPassword'].errors }" />
+        <div
+          *ngIf="submitted && f['memberPassword'].errors"
+          class="invalid-feedback">
+          <div *ngIf="f['memberPassword'].errors">請輸入密碼</div>
+        </div>
+        <div class="title">
+          <div class="button">
+            <button
+              type="submit"
+              [disabled]="loading"
+              mat-raised-button
+              color="primary"
+              [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]=" '/profiles'| localize"
+              routerLinkActive="active">
+              登入
+            </button>
+          </div>
+
+          <p class="message">
+            <a routerLink="../register">註冊會員 |</a>
+            <a routerLink="../forgetpassword">忘記密碼</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

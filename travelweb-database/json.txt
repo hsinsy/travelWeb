@@ -1,0 +1,34 @@
+{   
+    "memberId": "",
+    "memberName": "",
+    "memberAccount": "",
+    "memberPassword": "",
+    "memberEmail": "",
+    "memberPhone": "",
+    "memberAddress": ""
+}
+
+{   
+    "productId": "",
+    "productCode": "",
+    "productName": "",
+    "productArea": "",
+    "productImgUrl": "",
+    "startDate": "",
+    "endDate": "",
+    "travelDays": "",
+    "productPriceAdult": "",
+    "productPriceChild": ""
+}
+
+{   
+    "orderId": "",
+    "memberId": "",
+    "productCode": "",
+    "productName": "",
+    "startDate": "",
+    "endDate": "",
+    "productAmountAdult": "",
+    "productAmountChild": "",
+    "productTotalPrice": ""
+}

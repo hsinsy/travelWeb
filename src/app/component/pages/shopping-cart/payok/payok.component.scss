@@ -1,0 +1,104 @@
+.bgContainer{
+    background: linear-gradient(to bottom,  rgba(244,133,213,1) 0%,rgba(185,40,144,0) 60%);
+  }
+  
+  .rectangle-container {
+    margin-top: 50px; /* 上方間距 */
+    padding: 20px;
+    
+  }
+  
+  .rectangle {
+    width: 99%; /* 長方形佔畫面寬度的% */
+    height: 720px; /* 設定高度 */
+    border: 0.5px solid black; /* 設定邊框，黑色實線 */
+  }
+    .rectangle p {
+    margin: 0; /* 清除段落元素的預設邊距 */
+    padding: 20px;
+      
+  }
+  
+  .inner-rectangle {
+    width: 520px; /* 長方形佔畫面寬度的% */
+    height: 150px; /* 設定高度 */
+    border: 0.5px solid black; /* 設定邊框，黑色實線 */
+    margin-top: 10px;
+    margin-left: 20px; /* 左邊間距為20px */
+    padding: 10px;
+  }
+  
+  
+  .rectangle_2-container {
+    margin-top: 80px; /* 上方間距 */
+    padding: 20px;
+    
+  }
+  
+  .rectangle_2 {
+    width: 99%; /* 長方形佔畫面寬度的% */
+    height: 60px; /* 設定高度 */
+    border: 0.5px solid black; /* 設定邊框，黑色實線 */
+  }
+    .rectangle_2 p {
+    margin: 0; /* 清除段落元素的預設邊距 */
+    padding: 20px;  
+  }
+  
+  hr {
+    border: none; /* 移除默认边框 */
+    border-top: 0.5px solid black; /* 添加黑色边框 */
+    margin: 10px 0; /* 添加上下边距 */
+  }
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 180px; /* 设置图像之间的间距 */
+  }
+  .image-container img {
+    /* 可以设置图像的样式，如大小、边框等 */
+    max-width: 12%; /* 图像不超出其容器 */
+  }
+  
+  .rectangletwo {
+  width: 99%; /* 長方形佔畫面寬度的% */
+  height: 300px; /* 設定高度 */
+  border: 0.5px solid black; /* 設定邊框，黑色實線 */
+  }
+  .rectangletwo p {
+  margin: 0; /* 清除段落元素的預設邊距 */
+  padding: 20px;
+    
+  }
+  
+  .rectanglethree {
+  width: 99%; /* 長方形佔畫面寬度的% */
+  height: 160px; /* 設定高度 */
+  border: 0.5px solid black; /* 設定邊框，黑色實線 */
+  }
+  .rectanglethree p {
+  margin: 0; /* 清除段落元素的預設邊距 */
+  padding: 20px;
+  }
+  
+  .rectanglefour {
+    width: 600px; /* 長方形佔畫面寬度的% */
+    height:270px; /* 設定高度 */
+    border: 0.5px solid black; /* 設定邊框，黑色實線 */
+    float: right; /* 将长方形向右浮动 */
+    margin-right: 20px; /* 右邊間距為20px */
+    margin-top: -25px; /* 上方間距 */
+    }
+    .rectanglefour p {
+    margin: 0; /* 清除段落元素的預設邊距 */
+    padding: 10px;
+    }
+    .order-title {
+        color: rgb(128, 0, 0); /* 設置標題文字顏色為綠色 */
+      }
+      
+      .check-mark {
+        font-size: 30px; /* 設置箭頭字體大小 */
+        margin-right: 15px; /* 在箭頭右側添加一些間距 */
+      }
+      
