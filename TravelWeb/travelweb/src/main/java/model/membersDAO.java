@@ -44,11 +44,11 @@ public class membersDAO {
 		return x;
 	}
 
-	public boolean LoginMember(String account, String password) {
+	public members LoginMember(String account, String password) {
 		if (findByAccount(account) != null && findByPassword(password) != null)
-			return true;
+			return findByAccount(account);
 		else
-			return false;
+			return null;
 	}
 
 	public boolean addMember(members m1) {
